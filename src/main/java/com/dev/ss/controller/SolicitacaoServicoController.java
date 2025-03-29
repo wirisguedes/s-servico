@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class SolicitacaoServicoController {
 
 
     @PostMapping
-    public ResponseEntity<SolicitacaoServico> save(@RequestBody SolicitacaoServicoPostRequestBody solicitacaoServico){
+    public ResponseEntity<SolicitacaoServico> save(@RequestBody @Valid SolicitacaoServicoPostRequestBody solicitacaoServico){
         return new ResponseEntity<>(solicitacaoServicoService.save(solicitacaoServico), HttpStatus.CREATED);
     }
 
