@@ -9,9 +9,7 @@ import com.dev.ss.requests.SolicitacaoServicoPutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -21,8 +19,12 @@ public class SolicitacaoServicoService {
 
     private final SolicitacaoServicoRepository solicitacaoServicoRepository;
 
-    public Page<SolicitacaoServico> listAll(Pageable pageable) {
+    public Page<SolicitacaoServico> list(Pageable pageable) {
         return solicitacaoServicoRepository.findAll(pageable);
+    }
+
+    public List<SolicitacaoServico> listAll() {
+        return solicitacaoServicoRepository.findAll();
     }
 
     public List<SolicitacaoServico> findByClienteNome(String clienteNome) {

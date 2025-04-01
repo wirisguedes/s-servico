@@ -28,8 +28,15 @@ public class SolicitacaoServicoController {
     @GetMapping
     public ResponseEntity<Page<SolicitacaoServico>>  list(Pageable pageable){
         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
-        return ResponseEntity.ok(solicitacaoServicoService.listAll(pageable));
+        return ResponseEntity.ok(solicitacaoServicoService.list(pageable));
     }
+
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<SolicitacaoServico>>  listAll(){
+        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
+        return ResponseEntity.ok(solicitacaoServicoService.listAll());
+    }
+
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<SolicitacaoServico> findById(@PathVariable long id){
